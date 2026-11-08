@@ -1,0 +1,1603 @@
+# ---------------------------------------------------------------
+# Trend dashboard settings. Edit this file in GitHub to customize.
+# Indent with spaces only. Each list item starts with "- ".
+# Keywords automatically match plurals (supplement = supplements).
+# ---------------------------------------------------------------
+
+# Your Reddit username (no "u/"). Reddit asks apps to identify who runs them.
+reddit_username: ""
+
+# Leave false. Reddit's rules only allow automated access through its API,
+# so the Reddit section stays off until you add API keys (see README).
+reddit_allow_without_login: false
+
+# Relevance filter: Claude scores each trend lead 0-10 (see `leads` / `scores` in briefing.py).
+# Items rated below min_score are hidden. No local model or key needed.
+scoring:
+  min_score: 6
+  publications: Verywell Health, Verywell Mind, Verywell Fit, Health.com, and Prevention
+
+# Repeats: hide anything already shown in an earlier report. If fewer than
+# min_new_items new headlines are left, run extra searches (starting with
+# today's rising topics, then a rotating slice of the topic keywords).
+repeats:
+  hide_repeats: true
+  min_new_items: 12
+  max_extra_searches: 12
+
+# Outputs: everything goes into one page, docs/index.html.
+outputs:
+  markdown: false   # true also writes reports/briefing-*.md
+
+# Subreddits to watch (name only, no "r/"). Ones that don't exist are skipped.
+subreddits:
+  # Nutrition, weight, fitness
+  - Supplements
+  - nutrition
+  - EatCheapAndHealthy
+  - loseit
+  - Semaglutide
+  - Zepbound
+  - intermittentfasting
+  - Fitness
+  - xxfitness
+  - running
+  - bodyweightfitness
+  # Mind and sleep
+  - sleep
+  - insomnia
+  - Anxiety
+  - ADHD
+  - adhdwomen
+  - mentalhealth
+  - depression
+  - OCD
+  # Skin and hair
+  - SkincareAddiction
+  - 30PlusSkinCare
+  - AsianBeauty
+  - HaircareScience
+  - tressless
+  - eczema
+  - Rosacea
+  # Women's, men's, sexual health
+  - Menopause
+  - Perimenopause
+  - PCOS
+  - endometriosis
+  - WomensHealth
+  - birthcontrol
+  - Testosterone
+  # Pregnancy and parenting
+  - TryingForABaby
+  - BabyBumps
+  - beyondthebump
+  - Parenting
+  - ScienceBasedParenting
+  # Conditions
+  - ibs
+  - GutHealth
+  - Celiac
+  - CrohnsDisease
+  - migraine
+  - diabetes
+  - diabetes_t2
+  - Hypothyroidism
+  - Hashimotos
+  - ChronicPain
+  - Fibromyalgia
+  - Allergies
+  - Asthma
+  - Tinnitus
+  - MultipleSclerosis
+  - lupus
+  - cancer
+  - dementia
+  - covidlonghaulers
+  # Habits and longevity
+  - stopdrinking
+  - QuitVaping
+  - Biohackers
+  - longevity
+  - AskDocs
+
+# Google News searches (last few days). Platform words like "TikTok" are only used to
+# FIND stories; a story is shown only if it also matches a health topic below.
+news_searches:
+  # TikTok
+  - '"TikTok trend" health'
+  - '"TikTok trend" wellness'
+  - '"viral on TikTok" health'
+  - '"TikTok" doctors warn'
+  - '"TikTok" dermatologist'
+  - '"TikTok" dietitian'
+  - '"TikTok" supplement'
+  - '"TikTok" sleep trend'
+  - '"TikTok" menopause'
+  - '"TikTok" fitness trend'
+  - '"TikTok" diet trend'
+  - '"TikTok" mental health trend'
+  - '"TikTok" parenting trend'
+  # Instagram and other platforms
+  - '"Instagram" wellness trend'
+  - '"influencers" health claims experts'
+  - '"social media trend" health'
+  - '"viral" wellness trend'
+  - '"viral video" doctor'
+  - '"Gen Z" health trend'
+  # Reddit
+  - '"Reddit" health thread'
+  - '"Reddit users" health'
+  - '"viral Reddit" health'
+
+# YouTube searches (only used if you add a YOUTUBE_API_KEY secret).
+youtube_searches:
+  - health trend
+  - wellness routine
+  - what I eat in a day
+  - supplements I take
+  - skincare routine dermatologist
+  - gut health
+  - perimenopause
+  - GLP-1 journey
+  - doctor reacts health trend
+
+# Topic categories. Posts and headlines are tagged by these keywords,
+# and the "Rising" section tracks how often each keyword appears day to day.
+categories:
+  Nutrition:
+    - protein
+    - fiber
+    - fibermaxxing
+    - high-protein
+    - protein coffee
+    - protein shake
+    - keto
+    - carnivore
+    - vegan
+    - plant-based
+    - mediterranean diet
+    - seed oil
+    - ultra-processed
+    - processed food
+    - added sugar
+    - artificial sweetener
+    - aspartame
+    - food dye
+    - red dye
+    - raw milk
+    - electrolyte
+    - hydration
+    - cottage cheese
+    - greek yogurt
+    - chia seed
+    - flaxseed
+    - fermented
+    - kefir
+    - kimchi
+    - sauerkraut
+    - kombucha
+    - bone broth
+    - oatzempic
+    - dirty soda
+    - matcha
+    - mushroom coffee
+    - apple cider vinegar
+    - olive oil
+    - intermittent fasting
+    - fasting
+    - calorie deficit
+    - meal prep
+    - anti-inflammatory diet
+    - sodium
+    - caffeine
+    - energy drink
+    - mocktail
+  Supplements:
+    - supplement
+    - magnesium
+    - magnesium glycinate
+    - creatine
+    - collagen
+    - vitamin d
+    - vitamin b12
+    - iron
+    - zinc
+    - ashwagandha
+    - berberine
+    - omega-3
+    - fish oil
+    - probiotic
+    - prebiotic
+    - melatonin
+    - nad+
+    - nmn
+    - colostrum
+    - sea moss
+    - shilajit
+    - lion's mane
+    - glycine
+    - l-theanine
+    - inositol
+    - turmeric
+    - elderberry
+    - psyllium
+    - adaptogen
+    - beef liver
+    - greens powder
+    - electrolyte powder
+    - kratom
+  Weight & GLP-1:
+    - glp-1
+    - ozempic
+    - wegovy
+    - mounjaro
+    - zepbound
+    - semaglutide
+    - tirzepatide
+    - retatrutide
+    - orforglipron
+    - compounded
+    - microdosing
+    - weight loss
+    - weight gain
+    - obesity
+    - bmi
+    - ozempic face
+    - food noise
+    - muscle loss
+  Fitness:
+    - walking
+    - step count
+    - 10k steps
+    - zone 2
+    - strength training
+    - weightlifting
+    - resistance training
+    - pilates
+    - wall pilates
+    - reformer
+    - hiit
+    - running
+    - marathon
+    - rucking
+    - weighted vest
+    - hyrox
+    - 12-3-30
+    - japanese walking
+    - mobility
+    - stretching
+    - vo2 max
+    - cardio
+    - yoga
+    - somatic
+    - recovery
+    - soreness
+    - protein timing
+  Mental Health:
+    - anxiety
+    - depression
+    - adhd
+    - burnout
+    - stress
+    - therapy
+    - therapist
+    - ssri
+    - antidepressant
+    - panic attack
+    - ocd
+    - ptsd
+    - bipolar
+    - autism
+    - neurodivergent
+    - loneliness
+    - dopamine
+    - dopamine detox
+    - cortisol
+    - cortisol face
+    - nervous system
+    - vagus nerve
+    - journaling
+    - mindfulness
+    - meditation
+    - breathwork
+    - bed rotting
+    - doomscrolling
+    - screen time
+    - digital detox
+    - seasonal depression
+    - grief
+    - suicide
+    - eating disorder
+    - psilocybin
+    - ketamine
+  Sleep:
+    - sleep
+    - insomnia
+    - mouth tape
+    - mouth taping
+    - sleepmaxxing
+    - nap
+    - sleepy girl mocktail
+    - circadian
+    - sleep apnea
+    - cpap
+    - sleep divorce
+    - sleep tourism
+    - weighted blanket
+    - white noise
+    - brown noise
+    - melatonin gummies
+  Skin & Hair:
+    - skincare
+    - retinol
+    - retinoid
+    - tretinoin
+    - sunscreen
+    - spf
+    - acne
+    - rosacea
+    - eczema
+    - psoriasis
+    - hyperpigmentation
+    - melasma
+    - niacinamide
+    - vitamin c serum
+    - azelaic acid
+    - peptide
+    - pdrn
+    - salmon sperm
+    - snail mucin
+    - skin cycling
+    - slugging
+    - microneedling
+    - botox
+    - lip filler
+    - hair loss
+    - minoxidil
+    - rosemary oil
+    - hair growth
+    - hair oiling
+    - scalp
+    - beef tallow
+    - red light
+    - led mask
+    - gua sha
+    - ice facial
+    - castor oil
+  Women's Health:
+    - menopause
+    - perimenopause
+    - hrt
+    - hormone therapy
+    - estrogen
+    - progesterone
+    - vaginal estrogen
+    - hot flash
+    - pcos
+    - endometriosis
+    - periods
+    - menstrual
+    - period cramps
+    - pms
+    - pmdd
+    - cycle syncing
+    - fertility
+    - egg freezing
+    - ivf
+    - birth control
+    - iud
+    - uti
+    - yeast infection
+    - bacterial vaginosis
+    - pelvic floor
+    - breast cancer
+    - mammogram
+    - osteoporosis
+  Men's Health:
+    - testosterone
+    - trt
+    - erectile dysfunction
+    - prostate
+    - psa test
+    - sperm count
+    - vasectomy
+    - male fertility
+  Sexual Health:
+    - libido
+    - sti
+    - std
+    - hpv
+    - herpes
+    - syphilis
+    - chlamydia
+    - hiv
+    - hiv prevention
+    - doxypep
+    - condom
+  Pregnancy & Parenting:
+    - pregnancy
+    - pregnant
+    - prenatal
+    - postpartum
+    - postpartum depression
+    - breastfeeding
+    - baby formula
+    - infant formula
+    - newborn
+    - baby
+    - toddler
+    - tylenol
+    - acetaminophen
+    - miscarriage
+    - preeclampsia
+    - gestational diabetes
+    - epidural
+    - c-section
+    - picky eater
+    - kids screen time
+  Kids' Health:
+    - rsv
+    - hand foot and mouth
+    - strep
+    - ear infection
+    - croup
+    - pinkeye
+    - lice
+    - teething
+    - vaccine schedule
+    - childhood obesity
+    - teen mental health
+  Gut & Digestion:
+    - gut health
+    - microbiome
+    - bloating
+    - ibs
+    - constipation
+    - diarrhea
+    - acid reflux
+    - gerd
+    - heartburn
+    - sibo
+    - celiac
+    - gluten
+    - lactose
+    - crohn's
+    - colitis
+    - colonoscopy
+    - colon cancer
+    - poop
+    - fiber supplement
+  Heart & Metabolic:
+    - blood pressure
+    - hypertension
+    - cholesterol
+    - ldl
+    - apob
+    - lp(a)
+    - statin
+    - heart attack
+    - heart disease
+    - stroke
+    - afib
+    - blood sugar
+    - glucose
+    - glucose spike
+    - insulin resistance
+    - prediabetes
+    - diabetes
+    - type 2 diabetes
+    - cgm
+    - fatty liver
+    - metabolic health
+    - triglycerides
+  Brain & Aging:
+    - dementia
+    - alzheimer's
+    - memory loss
+    - brain fog
+    - cognitive decline
+    - parkinson's
+    - hearing loss
+    - hearing aid
+    - fall risk
+    - frailty
+    - menopause brain
+  Cancer:
+    - cancer
+    - cancer screening
+    - early-onset cancer
+    - lung cancer
+    - skin cancer
+    - melanoma
+    - prostate cancer
+    - chemotherapy
+    - immunotherapy
+    - tumor
+  Allergies & Respiratory:
+    - allergies
+    - seasonal allergies
+    - hay fever
+    - pollen
+    - food allergy
+    - alpha-gal
+    - asthma
+    - copd
+    - sinus infection
+    - air quality
+    - wildfire smoke
+  Eyes, Ears & Teeth:
+    - dry eye
+    - myopia
+    - eye drops
+    - glaucoma
+    - cataract
+    - tinnitus
+    - earwax
+    - oral health
+    - teeth whitening
+    - fluoride
+    - cavities
+    - oil pulling
+    - gum disease
+  Pain & Injury:
+    - back pain
+    - neck pain
+    - knee pain
+    - arthritis
+    - osteoarthritis
+    - inflammation
+    - chronic pain
+    - fibromyalgia
+    - migraine
+    - headache
+    - plantar fasciitis
+    - tendonitis
+    - concussion
+    - sprain
+    - physical therapy
+  Autoimmune & Chronic:
+    - autoimmune
+    - lupus
+    - multiple sclerosis
+    - rheumatoid arthritis
+    - hashimoto's
+    - thyroid
+    - hypothyroidism
+    - long covid
+    - chronic fatigue
+    - pots syndrome
+    - dysautonomia
+    - mcas
+    - ehlers-danlos
+  Infectious Disease:
+    - covid
+    - flu
+    - bird flu
+    - h5n1
+    - measles
+    - whooping cough
+    - norovirus
+    - stomach bug
+    - mpox
+    - tick bite
+    - lyme disease
+    - west nile
+    - vaccine
+    - booster
+    - antibiotic
+    - outbreak
+  Substance Use:
+    - alcohol
+    - sober curious
+    - dry january
+    - sober october
+    - hangover
+    - cannabis
+    - thc
+    - cbd
+    - nicotine
+    - vaping
+    - zyn
+    - nicotine pouch
+    - kratom
+    - fentanyl
+    - naloxone
+  Environment & Safety:
+    - microplastics
+    - pfas
+    - forever chemicals
+    - heavy metals
+    - lead poisoning
+    - mold
+    - heat stroke
+    - heat wave
+    - food recall
+    - recall
+    - listeria
+    - salmonella
+    - e. coli
+    - sunburn
+  Medications:
+    - side effects
+    - drug shortage
+    - generic drug
+    - ozempic shortage
+    - adderall
+    - ssri withdrawal
+    - antihistamine
+    - benadryl
+    - ibuprofen
+    - metformin
+    - finasteride
+    - accutane
+    - spironolactone
+    - fda approval
+    - otc
+  Longevity & Biohacking:
+    - longevity
+    - biohacking
+    - cold plunge
+    - sauna
+    - red light therapy
+    - peptides
+    - bpc-157
+    - rapamycin
+    - biological age
+    - healthspan
+    - full-body mri
+    - wearable
+    - oura
+    - whoop
+    - hrv
+    - grounding
+    - lymphatic drainage
+
+# Words ignored when finding brand-new terms.
+extra_stopwords:
+  - anyone
+  - else
+  - help
+  - question
+  - advice
+  - update
+  - week
+  - weeks
+  - day
+  - days
+  - month
+  - months
+  - year
+  - years
+
+# ---------------------------------------------------------------
+# Daily briefing settings (feeds + research jobs)
+# ---------------------------------------------------------------
+briefing:
+  news_days: 2
+  results_each: 5
+  feed_fetch_size: 40
+  research_days: 5
+  research_topics_per_run: 20
+  excluded_outlets: []
+  publication_feeds:
+    "CDC Newsroom": "https://tools.cdc.gov/api/v2/resources/media/132608.rss"
+    "WHO News": "https://www.who.int/rss-feeds/news-english.xml"
+    "NIH News Releases": "https://www.nih.gov/news-releases/feed.xml"
+    "ScienceDaily Health": "https://www.sciencedaily.com/rss/health_medicine.xml"
+    "Medical News Today": "https://www.medicalnewstoday.com/news/feed.rss"
+    "STAT News": "https://www.statnews.com/feed/"
+    "NPR Health": "https://feeds.npr.org/1128/rss.xml"
+    "MedPage Today": "https://www.medpagetoday.com/rss/headlines.xml"
+    "KFF Health News": "https://kffhealthnews.org/feed/"
+    "Mayo Clinic News Network": "https://newsnetwork.mayoclinic.org/feed/"
+    "BBC Health": "https://feeds.bbci.co.uk/news/health/rss.xml"
+    "The Guardian Health": "https://www.theguardian.com/society/health/rss"
+    "CPSC News": "https://www.cpsc.gov/Newsroom/CPSC-RSS-Feed/News-RSS"
+    "CPSC Recalls": "https://www.cpsc.gov/Newsroom/CPSC-RSS-Feed/Recalls-RSS"
+  research_topics:
+    - "exercise"
+    - "physical activity"
+    - "strength training"
+    - "resistance training"
+    - "cardiorespiratory fitness"
+    - "aerobic exercise"
+    - "high intensity interval training"
+    - "VO2 max"
+    - "walking"
+    - "running"
+    - "muscle strength"
+    - "sports medicine"
+    - "exercise recovery"
+    - "exercise in older adults"
+    - "nutrition"
+    - "dietary patterns"
+    - "Mediterranean diet"
+    - "plant based diet"
+    - "protein intake"
+    - "dietary fiber"
+    - "ultra-processed foods"
+    - "added sugar"
+    - "omega-3 fatty acids"
+    - "intermittent fasting"
+    - "personalized nutrition"
+    - "hydration"
+    - "dietary supplements"
+    - "supplement safety"
+    - "multivitamins"
+    - "vitamin D"
+    - "magnesium"
+    - "creatine"
+    - "omega-3 supplements"
+    - "probiotics"
+    - "protein supplements"
+    - "collagen supplements"
+    - "melatonin"
+    - "ashwagandha"
+    - "NAD precursors"
+    - "weight loss"
+    - "weight management"
+    - "obesity"
+    - "GLP-1 receptor agonists"
+    - "semaglutide"
+    - "tirzepatide"
+    - "anti-obesity medications"
+    - "weight regain"
+    - "bariatric surgery"
+    - "body composition"
+    - "metabolic health"
+    - "metabolic syndrome"
+    - "insulin resistance"
+    - "prediabetes"
+    - "type 2 diabetes"
+    - "glycemic control"
+    - "continuous glucose monitoring"
+    - "hypertension"
+    - "blood pressure"
+    - "cardiovascular disease"
+    - "cholesterol"
+    - "LDL cholesterol"
+    - "HDL cholesterol"
+    - "triglycerides"
+    - "statins"
+    - "lipoprotein(a)"
+    - "apolipoprotein B"
+    - "healthy aging"
+    - "longevity"
+    - "healthspan"
+    - "biological age"
+    - "sarcopenia"
+    - "frailty"
+    - "cellular senescence"
+    - "NAD metabolism"
+    - "calorie restriction"
+    - "exercise and longevity"
+    - "cognitive aging"
+    - "osteoporosis"
+  news_topics:
+    - "blood pressure"
+    - "cholesterol"
+    - "blood glucose"
+    - "metabolic health"
+    - "wellness misinformation"
+    - "unsafe wellness trend"
+    - "TikTok fitness trend"
+    - "TikTok wellness trend"
+    - "TikTok nutrition trend"
+    - "TikTok supplement trend"
+    - "TikTok medicine trend"
+    - "Instagram fitness trend"
+    - "Instagram wellness trend"
+    - "YouTube fitness trend"
+    - "YouTube wellness trend"
+    - "Reddit health trend"
+    - "viral health trend"
+    - "viral wellness trend"
+    - "viral diet trend"
+    - "viral workout trend"
+    - "viral supplement trend"
+    - "viral recovery trend"
+    - "viral sleep trend"
+    - "viral skincare trend"
+    - "viral weight loss trend"
+    - "fitness influencer claim"
+    - "wellness influencer claim"
+    - "nutrition influencer claim"
+    - "health influencer misinformation"
+    - "what I eat in a day trend"
+    - "morning routine health trend"
+    - "health hack"
+    - "wellness hack"
+    - "diet hack"
+    - "fitness hack"
+    - "sleep hack"
+    - "wellness challenge"
+    - "fitness challenge"
+    - "diet challenge"
+    - "biohacking trend"
+    - "self-optimization trend"
+    - "health misinformation"
+    - "medical misinformation"
+    - "nutrition misinformation"
+    - "supplement misinformation"
+    - "dangerous wellness trend"
+    - "dangerous fitness trend"
+    - "dangerous diet trend"
+    - "unproven health treatment"
+    - "unproven supplement claim"
+    - "fitness trend"
+    - "workout trend"
+    - "exercise trend"
+    - "strength training trend"
+    - "resistance training trend"
+    - "hypertrophy training"
+    - "muscle building study"
+    - "muscle strength study"
+    - "power training study"
+    - "bodyweight training"
+    - "calisthenics trend"
+    - "functional fitness trend"
+    - "CrossFit trend"
+    - "HIIT study"
+    - "low intensity exercise"
+    - "zone 2 training"
+    - "VO2 max training"
+    - "cardiorespiratory fitness"
+    - "aerobic fitness study"
+    - "walking study"
+    - "running study"
+    - "cycling study"
+    - "swimming study"
+    - "rowing workout"
+    - "rucking trend"
+    - "Pilates trend"
+    - "yoga trend"
+    - "barre workout trend"
+    - "mobility training"
+    - "flexibility training"
+    - "balance training"
+    - "core training"
+    - "exercise snacks"
+    - "micro workout trend"
+    - "home workout trend"
+    - "gym trend"
+    - "personal training trend"
+    - "group fitness trend"
+    - "outdoor fitness trend"
+    - "sedentary behavior study"
+    - "daily step count study"
+    - "physical activity guidelines"
+    - "exercise adherence"
+    - "exercise motivation"
+    - "overtraining syndrome"
+    - "exercise addiction"
+    - "exercise injury"
+    - "workout safety"
+    - "rhabdomyolysis workout"
+    - "youth fitness"
+    - "older adult fitness"
+    - "masters athlete"
+    - "adaptive fitness"
+    - "prenatal exercise"
+    - "postpartum exercise"
+    - "exercise during menopause"
+    - "female athlete health"
+    - "sports performance trend"
+    - "workout recovery trend"
+    - "exercise recovery study"
+    - "muscle recovery study"
+    - "sports medicine study"
+    - "sports injury prevention"
+    - "concussion research"
+    - "return to play guidelines"
+    - "tendon injury treatment"
+    - "ligament injury treatment"
+    - "muscle strain treatment"
+    - "joint pain exercise"
+    - "back pain exercise"
+    - "neck pain exercise"
+    - "knee pain exercise"
+    - "shoulder pain exercise"
+    - "delayed onset muscle soreness"
+    - "DOMS recovery"
+    - "active recovery"
+    - "rest day study"
+    - "stretching study"
+    - "mobility study"
+    - "foam rolling study"
+    - "massage gun trend"
+    - "sports massage study"
+    - "compression therapy"
+    - "compression boots trend"
+    - "cold plunge trend"
+    - "cold water immersion study"
+    - "ice bath study"
+    - "cryotherapy trend"
+    - "heat therapy study"
+    - "sauna study"
+    - "infrared sauna trend"
+    - "red light therapy trend"
+    - "photobiomodulation study"
+    - "hyperbaric oxygen therapy"
+    - "recovery wearable"
+    - "heart rate variability recovery"
+    - "sleep and athletic performance"
+    - "protein timing study"
+    - "carbohydrate recovery study"
+    - "hydration and performance"
+    - "electrolyte replacement"
+    - "nutrition study"
+    - "diet study"
+    - "healthy eating study"
+    - "dietary guidelines"
+    - "Mediterranean diet study"
+    - "DASH diet study"
+    - "plant based diet study"
+    - "vegan diet study"
+    - "vegetarian diet study"
+    - "flexitarian diet study"
+    - "low carbohydrate diet study"
+    - "ketogenic diet study"
+    - "carnivore diet trend"
+    - "paleo diet trend"
+    - "intermittent fasting study"
+    - "time restricted eating study"
+    - "alternate day fasting study"
+    - "fasting trend"
+    - "high protein diet"
+    - "high protein trend"
+    - "protein intake study"
+    - "protein quality study"
+    - "plant protein study"
+    - "animal protein study"
+    - "fiber intake study"
+    - "dietary fiber trend"
+    - "carbohydrate study"
+    - "healthy fats study"
+    - "saturated fat study"
+    - "omega-3 study"
+    - "sodium intake study"
+    - "added sugar study"
+    - "artificial sweetener study"
+    - "non-sugar sweetener study"
+    - "seed oil trend"
+    - "cooking oil study"
+    - "ultra-processed food study"
+    - "processed food study"
+    - "food additive study"
+    - "food emulsifier study"
+    - "food dye study"
+    - "preservative study"
+    - "fermented food study"
+    - "whole grain study"
+    - "fruit and vegetable study"
+    - "red meat study"
+    - "processed meat study"
+    - "dairy study"
+    - "egg consumption study"
+    - "coffee health study"
+    - "tea health study"
+    - "alcohol health study"
+    - "nonalcoholic beverage trend"
+    - "hydration trend"
+    - "hydration study"
+    - "meal timing study"
+    - "breakfast study"
+    - "late night eating study"
+    - "portion size study"
+    - "calorie restriction study"
+    - "intuitive eating"
+    - "mindful eating"
+    - "clean eating trend"
+    - "food combining trend"
+    - "detox diet trend"
+    - "juice cleanse trend"
+    - "elimination diet"
+    - "low FODMAP diet"
+    - "gluten free diet"
+    - "food sensitivity test"
+    - "continuous glucose monitor diet"
+    - "personalized nutrition"
+    - "precision nutrition"
+    - "nutrigenomics"
+    - "sports nutrition"
+    - "nutrition for aging"
+    - "nutrition during menopause"
+    - "prenatal nutrition"
+    - "postpartum nutrition"
+    - "child nutrition"
+    - "adolescent nutrition"
+    - "eating disorder research"
+    - "disordered eating trend"
+    - "supplement trend"
+    - "dietary supplement study"
+    - "dietary supplement warning"
+    - "dietary supplement recall"
+    - "supplement contamination"
+    - "supplement adulteration"
+    - "supplement mislabeling"
+    - "supplement drug interaction"
+    - "supplement side effect"
+    - "supplement third party testing"
+    - "supplement regulation"
+    - "sports supplement trend"
+    - "sports supplement safety"
+    - "multivitamin study"
+    - "vitamin D study"
+    - "vitamin B12 study"
+    - "vitamin C study"
+    - "vitamin E study"
+    - "vitamin K study"
+    - "folate supplement"
+    - "iron supplement"
+    - "calcium supplement"
+    - "magnesium trend"
+    - "magnesium supplement study"
+    - "magnesium glycinate trend"
+    - "zinc supplement"
+    - "selenium supplement"
+    - "iodine supplement"
+    - "potassium supplement"
+    - "electrolyte supplement"
+    - "electrolyte powder trend"
+    - "omega-3 supplement"
+    - "fish oil study"
+    - "krill oil supplement"
+    - "creatine trend"
+    - "creatine study"
+    - "creatine for women"
+    - "creatine and aging"
+    - "protein powder trend"
+    - "whey protein study"
+    - "casein protein study"
+    - "plant protein powder"
+    - "collagen supplement trend"
+    - "collagen peptide study"
+    - "BCAA supplement"
+    - "essential amino acid supplement"
+    - "beta-alanine supplement"
+    - "citrulline supplement"
+    - "pre-workout supplement"
+    - "post-workout supplement"
+    - "caffeine supplement"
+    - "energy supplement"
+    - "greens powder trend"
+    - "superfood powder trend"
+    - "organ supplement trend"
+    - "beef liver supplement"
+    - "probiotic supplement"
+    - "prebiotic supplement"
+    - "postbiotic supplement"
+    - "synbiotic supplement"
+    - "fiber supplement"
+    - "digestive enzyme supplement"
+    - "melatonin trend"
+    - "sleep supplement"
+    - "ashwagandha trend"
+    - "rhodiola supplement"
+    - "adaptogen trend"
+    - "medicinal mushroom supplement"
+    - "lion's mane supplement"
+    - "reishi supplement"
+    - "cordyceps supplement"
+    - "turmeric supplement"
+    - "curcumin study"
+    - "ginger supplement"
+    - "berberine trend"
+    - "berberine study"
+    - "CoQ10 supplement"
+    - "NAC supplement"
+    - "glutathione supplement"
+    - "resveratrol supplement"
+    - "quercetin supplement"
+    - "NMN supplement"
+    - "nicotinamide riboside supplement"
+    - "NAD supplement trend"
+    - "nootropic supplement"
+    - "brain supplement"
+    - "memory supplement"
+    - "focus supplement"
+    - "stress supplement"
+    - "hormone balance supplement"
+    - "menopause supplement"
+    - "testosterone booster"
+    - "fertility supplement"
+    - "hair growth supplement"
+    - "skin supplement"
+    - "weight loss supplement"
+    - "fat burner supplement"
+    - "appetite suppressant supplement"
+    - "detox supplement"
+    - "herbal supplement warning"
+    - "botanical supplement study"
+    - "traditional medicine supplement"
+    - "supplement gummy trend"
+    - "personalized supplements"
+    - "subscription supplements"
+    - "USP verified supplement"
+    - "NSF certified supplement"
+    - "Informed Sport supplement"
+    - "weight loss trend"
+    - "weight loss study"
+    - "weight management study"
+    - "obesity study"
+    - "obesity treatment"
+    - "metabolic health study"
+    - "metabolic syndrome study"
+    - "insulin resistance study"
+    - "prediabetes study"
+    - "type 1 diabetes study"
+    - "type 2 diabetes study"
+    - "blood sugar trend"
+    - "glucose monitoring trend"
+    - "continuous glucose monitor trend"
+    - "body composition study"
+    - "body fat study"
+    - "visceral fat study"
+    - "BMI study"
+    - "waist circumference study"
+    - "weight cycling study"
+    - "weight stigma"
+    - "weight loss drug"
+    - "obesity drug"
+    - "GLP-1 drug"
+    - "GLP-1 receptor agonist"
+    - "semaglutide"
+    - "tirzepatide"
+    - "next generation obesity drug"
+    - "oral GLP-1 drug"
+    - "compounded GLP-1"
+    - "GLP-1 microdosing"
+    - "GLP-1 side effects"
+    - "GLP-1 muscle loss"
+    - "GLP-1 nutrition"
+    - "GLP-1 exercise"
+    - "weight loss drug shortage"
+    - "weight loss drug safety"
+    - "weight regain after GLP-1"
+    - "bariatric surgery"
+    - "metabolic surgery"
+    - "fatty liver disease"
+    - "metabolic dysfunction-associated steatotic liver disease"
+    - "sleep study"
+    - "sleep trend"
+    - "sleep hygiene"
+    - "sleep duration study"
+    - "sleep quality study"
+    - "sleep deprivation study"
+    - "sleep consistency study"
+    - "sleep regularity study"
+    - "circadian rhythm study"
+    - "chronotype study"
+    - "social jetlag study"
+    - "daylight saving time health"
+    - "insomnia treatment"
+    - "sleep apnea treatment"
+    - "snoring treatment"
+    - "CPAP study"
+    - "sleep tracker study"
+    - "wearable sleep tracking"
+    - "sleep score trend"
+    - "mouth taping trend"
+    - "nasal breathing sleep trend"
+    - "weighted blanket study"
+    - "sleepmaxxing trend"
+    - "bed rotting trend"
+    - "sleep supplement trend"
+    - "melatonin safety"
+    - "magnesium for sleep"
+    - "caffeine and sleep"
+    - "alcohol and sleep"
+    - "exercise and sleep"
+    - "sleep and weight loss"
+    - "sleep and mental health"
+    - "sleep and heart health"
+    - "shift work health"
+    - "night shift health"
+    - "mental health trend"
+    - "mental health study"
+    - "anxiety study"
+    - "depression study"
+    - "stress study"
+    - "chronic stress study"
+    - "burnout study"
+    - "workplace mental health"
+    - "loneliness study"
+    - "social isolation study"
+    - "social connection study"
+    - "ADHD study"
+    - "autism study"
+    - "OCD study"
+    - "PTSD study"
+    - "bipolar disorder study"
+    - "schizophrenia study"
+    - "eating disorder study"
+    - "body image study"
+    - "therapy trend"
+    - "online therapy"
+    - "cognitive behavioral therapy"
+    - "mindfulness study"
+    - "meditation study"
+    - "breathwork trend"
+    - "somatic therapy trend"
+    - "vagus nerve trend"
+    - "nervous system regulation trend"
+    - "dopamine detox trend"
+    - "digital detox trend"
+    - "social media mental health"
+    - "screen time mental health"
+    - "psychedelic medicine"
+    - "ketamine therapy"
+    - "mental health app"
+    - "AI therapy chatbot"
+    - "suicide prevention"
+    - "substance use treatment"
+    - "opioid use disorder treatment"
+    - "alcohol use disorder treatment"
+    - "women's health trend"
+    - "women's health study"
+    - "menstrual health"
+    - "menstrual cycle tracking"
+    - "period product safety"
+    - "premenstrual syndrome treatment"
+    - "PMDD treatment"
+    - "PCOS study"
+    - "endometriosis study"
+    - "uterine fibroid treatment"
+    - "fertility study"
+    - "infertility treatment"
+    - "IVF research"
+    - "egg freezing trend"
+    - "contraception study"
+    - "birth control safety"
+    - "pregnancy health study"
+    - "maternal health"
+    - "maternal mortality"
+    - "prenatal health"
+    - "postpartum health"
+    - "postpartum depression"
+    - "breastfeeding study"
+    - "pelvic floor health"
+    - "perimenopause trend"
+    - "menopause trend"
+    - "menopause treatment"
+    - "menopausal hormone therapy"
+    - "hormone replacement therapy"
+    - "bone health in women"
+    - "female athlete triad"
+    - "relative energy deficiency in sport"
+    - "breast cancer screening"
+    - "cervical cancer screening"
+    - "ovarian cancer research"
+    - "sexual health study"
+    - "vaginal health trend"
+    - "men's health trend"
+    - "men's health study"
+    - "testosterone study"
+    - "low testosterone treatment"
+    - "testosterone replacement therapy"
+    - "testosterone booster trend"
+    - "male fertility study"
+    - "sperm count study"
+    - "erectile dysfunction treatment"
+    - "prostate health"
+    - "prostate cancer screening"
+    - "male contraception research"
+    - "men's mental health"
+    - "men's cardiovascular health"
+    - "men's metabolic health"
+    - "andropause trend"
+    - "hormone health trend"
+    - "hormone balance trend"
+    - "hormone testing trend"
+    - "endocrine health study"
+    - "thyroid health"
+    - "hypothyroidism treatment"
+    - "hyperthyroidism treatment"
+    - "cortisol trend"
+    - "cortisol face trend"
+    - "cortisol detox trend"
+    - "adrenal fatigue misinformation"
+    - "insulin study"
+    - "estrogen study"
+    - "progesterone study"
+    - "growth hormone trend"
+    - "peptide therapy trend"
+    - "bioidentical hormone therapy"
+    - "endocrine disrupting chemicals"
+    - "forever chemicals hormone health"
+    - "gut health trend"
+    - "gut health study"
+    - "gut microbiome study"
+    - "microbiome trend"
+    - "gut brain axis study"
+    - "probiotic study"
+    - "prebiotic study"
+    - "postbiotic study"
+    - "fermented food microbiome"
+    - "digestive health trend"
+    - "bloating trend"
+    - "constipation treatment"
+    - "diarrhea treatment"
+    - "acid reflux treatment"
+    - "GERD treatment"
+    - "irritable bowel syndrome"
+    - "inflammatory bowel disease"
+    - "Crohn's disease treatment"
+    - "ulcerative colitis treatment"
+    - "celiac disease study"
+    - "gluten sensitivity"
+    - "SIBO trend"
+    - "leaky gut claim"
+    - "colon cancer screening"
+    - "colorectal cancer screening"
+    - "stool microbiome test"
+    - "fecal microbiota transplant"
+    - "liver health trend"
+    - "fatty liver treatment"
+    - "heart health study"
+    - "cardiovascular disease study"
+    - "heart disease prevention"
+    - "blood pressure study"
+    - "hypertension treatment"
+    - "cholesterol study"
+    - "LDL cholesterol study"
+    - "HDL cholesterol study"
+    - "triglyceride study"
+    - "statin study"
+    - "lipoprotein(a) study"
+    - "ApoB study"
+    - "heart attack prevention"
+    - "stroke prevention"
+    - "atrial fibrillation study"
+    - "heart rhythm wearable"
+    - "cardiac rehabilitation"
+    - "peripheral artery disease"
+    - "blood clot risk"
+    - "cardiovascular fitness"
+    - "exercise and heart health"
+    - "diet and heart health"
+    - "brain health trend"
+    - "brain health study"
+    - "cognitive health study"
+    - "memory study"
+    - "focus and attention study"
+    - "migraine treatment"
+    - "headache treatment"
+    - "traumatic brain injury study"
+    - "Alzheimer's disease treatment"
+    - "dementia prevention"
+    - "Parkinson's disease treatment"
+    - "multiple sclerosis treatment"
+    - "epilepsy treatment"
+    - "stroke recovery"
+    - "neuroplasticity study"
+    - "brain training trend"
+    - "nootropic trend"
+    - "brain supplement trend"
+    - "sleep and brain health"
+    - "exercise and brain health"
+    - "healthy aging study"
+    - "longevity study"
+    - "longevity trend"
+    - "anti-aging trend"
+    - "healthspan study"
+    - "lifespan study"
+    - "biological age test"
+    - "epigenetic clock"
+    - "aging biomarker"
+    - "cellular aging study"
+    - "senolytic drug"
+    - "rapamycin longevity"
+    - "metformin longevity"
+    - "NAD longevity"
+    - "NMN longevity"
+    - "resveratrol longevity"
+    - "calorie restriction longevity"
+    - "fasting longevity"
+    - "exercise longevity"
+    - "strength training longevity"
+    - "VO2 max longevity"
+    - "sleep longevity"
+    - "social connection longevity"
+    - "centenarian study"
+    - "blue zones study"
+    - "sarcopenia prevention"
+    - "frailty prevention"
+    - "fall prevention"
+    - "bone density aging"
+    - "osteoporosis prevention"
+    - "cognitive aging"
+    - "geroscience research"
+    - "rejuvenation biotechnology"
+    - "bone health study"
+    - "bone density study"
+    - "osteoporosis treatment"
+    - "fracture prevention"
+    - "joint health study"
+    - "arthritis treatment"
+    - "osteoarthritis treatment"
+    - "back pain treatment"
+    - "neck pain treatment"
+    - "chronic pain treatment"
+    - "pain management study"
+    - "physical therapy study"
+    - "muscle loss prevention"
+    - "sarcopenia treatment"
+    - "immune health trend"
+    - "immune system study"
+    - "immune boosting misinformation"
+    - "infectious disease outbreak"
+    - "disease outbreak"
+    - "respiratory virus outbreak"
+    - "COVID-19 study"
+    - "long COVID study"
+    - "influenza outbreak"
+    - "RSV outbreak"
+    - "measles outbreak"
+    - "mpox outbreak"
+    - "norovirus outbreak"
+    - "bird flu outbreak"
+    - "tick borne disease"
+    - "Lyme disease study"
+    - "mosquito borne disease"
+    - "vaccine study"
+    - "vaccine approval"
+    - "vaccine safety"
+    - "vaccine recommendation"
+    - "antibiotic resistance"
+    - "cancer prevention study"
+    - "cancer risk study"
+    - "cancer screening guideline"
+    - "early cancer detection"
+    - "multi-cancer detection test"
+    - "liquid biopsy"
+    - "cancer vaccine"
+    - "cancer immunotherapy"
+    - "precision oncology"
+    - "breast cancer research"
+    - "prostate cancer research"
+    - "colorectal cancer research"
+    - "lung cancer screening"
+    - "skin cancer prevention"
+    - "pancreatic cancer research"
+    - "cervical cancer prevention"
+    - "exercise and cancer"
+    - "diet and cancer"
+    - "obesity and cancer"
+    - "skin health trend"
+    - "skincare trend"
+    - "dermatology study"
+    - "sunscreen study"
+    - "sunscreen safety"
+    - "acne treatment"
+    - "eczema treatment"
+    - "psoriasis treatment"
+    - "rosacea treatment"
+    - "skin barrier trend"
+    - "anti-aging skincare"
+    - "retinoid trend"
+    - "collagen skincare"
+    - "red light therapy skin"
+    - "cosmetic procedure trend"
+    - "injectable cosmetic treatment"
+    - "hair loss treatment"
+    - "scalp health trend"
+    - "oral health study"
+    - "dental health study"
+    - "gum disease study"
+    - "oral microbiome study"
+    - "fluoride study"
+    - "mouthwash study"
+    - "oil pulling trend"
+    - "medical research breakthrough"
+    - "new medical treatment"
+    - "new drug approval"
+    - "FDA drug approval"
+    - "FDA biologic approval"
+    - "FDA medical device approval"
+    - "FDA safety warning"
+    - "FDA boxed warning"
+    - "FDA drug recall"
+    - "FDA device recall"
+    - "drug safety warning"
+    - "medication recall"
+    - "drug shortage"
+    - "medication shortage"
+    - "drug interaction warning"
+    - "medication side effect"
+    - "clinical trial result"
+    - "blood test breakthrough"
+    - "gene therapy"
+    - "at-home medical test"
+    - "direct-to-consumer health test"
+    - "telehealth trend"
+    - "remote patient monitoring"
+    - "wearable fitness trend"
+    - "fitness tracker study"
+    - "smartwatch health study"
+    - "smart ring trend"
+    - "sleep wearable trend"
+    - "heart rate monitor study"
+    - "heart rate variability trend"
+    - "blood pressure wearable"
+    - "noninvasive glucose monitor"
+    - "wearable medical device"
+    - "digital health trend"
+    - "health app trend"
+    - "fitness app trend"
+    - "nutrition app trend"
+    - "meditation app study"
+    - "AI fitness coach"
+    - "AI nutrition coach"
+    - "AI health assistant"
+    - "AI medical chatbot"
+    - "virtual reality fitness"
+    - "virtual reality therapy"
+    - "connected fitness trend"
+    - "home fitness technology"
+    - "health data privacy"
+    - "wearable data privacy"
+    - "health app privacy"
+    - "direct-to-consumer lab testing"
+    - "at-home biomarker testing"
+    - "public health study"
+    - "public health warning"
+    - "prescription drug pricing"
+    - "air pollution health"
+    - "indoor air quality health"
+    - "wildfire smoke health"
+    - "extreme heat health"
+    - "heat illness prevention"
+    - "climate change health"
+    - "water contamination health"
+    - "lead exposure health"
+    - "microplastics health"
+    - "PFAS health"
+    - "pesticide exposure health"
+    - "foodborne illness outbreak"
+    - "food poisoning outbreak"
+    - "food recall"
+    - "FDA food recall"
+    - "USDA food recall"
+    - "contaminated food"
+    - "salmonella outbreak"
+    - "E. coli outbreak"
+    - "listeria outbreak"
+    - "norovirus food outbreak"
+    - "undeclared allergen recall"
+    - "food allergy warning"
+    - "infant formula recall"
+    - "baby food safety"
+    - "heavy metals in food"
+    - "lead in food"
+    - "cadmium in food"
+    - "arsenic in food"
+    - "microplastics in food"
+    - "PFAS in food"
+    - "food labeling rule"
+    - "nutrition label change"
+    - "food additive regulation"
+    - "artificial food dye regulation"
+    - "dietary supplement enforcement"
+    - "fitness misinformation"
+    - "vaccine misinformation"
+    - "cancer misinformation"
+    - "wellness scam"
+    - "health fraud"
+    - "medical fraud"
+    - "supplement fraud"
+    - "weight loss scam"
+    - "fake health product"
+    - "counterfeit medication"
+    - "counterfeit supplement"
+    - "unapproved drug warning"
+    - "unapproved medical device"
+    - "dangerous supplement trend"
+    - "dangerous workout trend"
+    - "social media health claim"
+    - "influencer health claim"
+    - "doctors warn viral trend"
+    - "dietitians warn viral trend"
+    - "FDA warning online product"
+    - "FTC health claim enforcement"
