@@ -1,0 +1,39 @@
+name: Daily briefing
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-briefing
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests PyYAML
+      - run: python briefing.py run
+        env:
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      - name: Save results
+        run: |
+          git config user.name "briefing-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A state docs
+          git diff --cached --quiet || git commit -m "Daily briefing $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin main && break
+            sleep $((RANDOM % 10 + 1))
+          done
