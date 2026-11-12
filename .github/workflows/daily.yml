@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: daily-briefing
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   briefing:
